@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="app.js"></script>
+    <title>Question 2</title>
+</head>
+<body>
+   <h1>Hotel Search</h1>
+    City : <select id="city">
+       <option value="select">select</option>
+       <option value="Chennai">Chennai</option>
+       <option value="Bangalore">Bangalore</option>
+       <option value="Cochin">Cochin</option>
+	   <option value="Coimbatore">Coimbatore</option>
+	   <option value="Trichy">Trichy</option>
+	 </select> 
+    Pincode : <input type="number" id="value" placeholder="pincode" /><br><br>
+    Type : <select id="type">
+        <option value="Budget">Budget</option>
+        <option value="1 Star">1 Star</option>
+      </select><br><br>
+    <input type="submit" value="submit" onclick="clicked()"/>
+
+    <h3 id="name"></h3>
+    <h3 id="address"></h3>
+    <h3 id="state"></h3>
+    <h3 id="pincode"></h3>
+    <h3 id="phone"></h3>
+    <h3 id="room"></h3>
+    <h3 id="max"></h3>
+    <h3 id="min"></h3>
+</body>
+</html>
