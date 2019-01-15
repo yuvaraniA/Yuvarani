@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="jquery-ui.css">
+<script src="jquery-1.12.4.js"></script>
+<script src="jquery-ui.js"></script>
+<style>
+input[type=text] 
+{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.selectBx{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=submit] 
+{
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+input[type=submit]:hover 
+{
+  background-color: #45a049;
+}
+
+div 
+{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<script type="text/javascript">
+    function ShowHideDiv() 
+	{
+        var chkYes = document.getElementById("chkYes");
+        var insurance = document.getElementById("insurance");
+        insurance.style.display = chkYes.checked ? "block" : "none";
+    }
+	
+	function showParent(){	
+        var parent = document.getElementById("parent");
+        parent.style.display = "block" ;
+	
+	}
+	function hideParent(){
+        var parent = document.getElementById("parent");
+        parent.style.display = "none";
+	}
+	
+	function chkDob(){
+		var date = document.getElementById("dob").value;
+		var dtSplit = date.split('-');
+		var dateComp  = new Date(dtSplit[2],dtSplit[1]-1,dtSplit[0],);
+		var chkDate = new Date();
+		chkDate.setFullYear( chkDate.getFullYear() - 18 );
+		console.log("chkDate"+date);
+		console.log("dateComp"+dateComp);
+		if(dateComp > chkDate ){
+		console.log("hi");
+			showParent();
+		}else{
+			console.log("Hello");
+			hideParent();
+		}
+		
+	}
+	
+	$( function() {
+    $( "#dob" ).datepicker().datepicker("option",{changeMonth:true,changeYear:true,dateFormat:"dd/mm/yy",yearRange:"1900:2100",dateFormat:"dd-mm-yy"});
+  } );
+</script>
+</head>
+<body>
+    <h1 align="center">Patient Registration Form</h1>
+<div>
+<b>
+<form action="/action_page.php">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">         
+    <label for="adre">Address</label>
+    <input type="text" id="adre" name="address" placeholder="Your full adress..">
+    <label for="city">city</label>
+    <select class="selectBx" id="city" name="city">
+       <option value="select">select</option>
+       <option value="Chennai">Chennai</option>
+       <option value="Coimbatore">Coimbatore</option>
+       <option value="Trichy">Trichy</option>
+    </select>
+    <label for="State">State</label>
+    <select class="selectBx" id="State" name="State">
+       <option value="select">select</option>
+       <option value="Andra pradesh">Andra pradesh</option>
+       <option value="Karnataka">Karnataka</option>
+       <option value="Tamilnadu">Tamilnadu</option>
+     </select>
+    <label for="pcode">Pincode</label>
+    <input type="text" id="pcode" name="Pincode"> 
+    <label for="pnumber"> Phone Number</label>
+    <input type="text" id="pnumber" name="Phone Number" placeholder="type your phone number">
+    <label for="alt number"> Emergency Number</label>
+    <input type="text" id="alt number" name="Emergency Number" placeholder="type your phone number"> 
+	<label for="pcode">Date of Birth</label>
+    <input type="text" id="dob" onChange="chkDob()" name="dob">
+	<div id="parent" style="display: none">
+        parent name:<input type="text" id="parent" />
+        Parent number:<input type="text"id="Parent"/>
+    </div>
+    <label for="Sex">Gender</label><br>
+    <input type="radio" name="gender" value="male" > Male
+    <input type="radio" name="gender" value="female"> Female
+    <input type="radio" name="gender" value="other"> other <br><br>
+    <label for="Marital Status">Marital Status</label><br>
+    <input type="radio" name="Marital Status" value="Married" > Married
+    <input type="radio" name="Marital Status" value="Single"> Single<br><br>
+    <label for="email">Email Address</label>
+    <input type="text" id="email" name="Email Address" placeholder="Type your email adress..">
+ 
+    <span>Insurance Available</span>
+    <label for="chkYes">
+    <input type="radio" id="chkYes" name="insurance available" onclick="ShowHideDiv()" /> Yes
+    </label>
+    <label for="chkNo">
+    <input type="radio" id="chkNo" name="insurance available" onclick="ShowHideDiv()" />No
+    </label>
+    <div id="insurance" style="display: none">
+        Insurance provider name:<input type="text" id="insurance" />
+        Policy Number:<input type="text" id="insurance"/>
+    </div>
+    <input type="submit" value="Submit">
+</form>
+</b>
+</div>
+</body>
+</html>
